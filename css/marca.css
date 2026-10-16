@@ -1,0 +1,14 @@
+/* MARCA — colores, tipografía y radios del sistema de diseño Ingeniería UdeA.
+   Cambie aquí un color y se actualiza en todo el sitio. */
+/* Concepto: kiosco de feria con el esquema "panel + contenido" del sistema Ingeniería UdeA:
+   barra lateral azul profundo con franja verde agua, lienzo blanco, tarjetas en superficie, sin sombras ni degradados. */
+:root{
+  color-scheme:light;
+  --verde:#8cbf44; --turquesa:#40b6a7; --azul:#07769a; --azul-prof:#0c4d66;
+  --lima:#ace639; --lima-suave:#eaf8c8; --verde-agua:#009999; --velo:rgba(0,153,153,.7);
+  --blanco:#ffffff; --texto:#434343; --texto-suave:#5b6266; --linea:#666666; --borde:#dfe3e4;
+  --sup:#f3f3f3; --sup-num:#f1f1f1; --menta:#d9f8f4;
+  --f:"Roboto",Arial,Helvetica,sans-serif; --f-cita:Arial,Helvetica,sans-serif;
+  --r-mos:10px; --r-tar:16px; --r-blo:22px; --r-pil:999px;
+  --franja:26px; --panel:300px;
+}

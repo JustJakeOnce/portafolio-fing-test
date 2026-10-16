@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudia Ingeniería UdeA</title>
+<meta name="description" content="Pregrados, posgrados, portafolio y Preuniversitario AVA de la Facultad de Ingeniería de la Universidad de Antioquia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,700&display=swap">
+<link rel="stylesheet" href="css/marca.css">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- ESTRUCTURA DE LA PÁGINA.
+     Los textos, precios, programas y enlaces NO se editan aquí: están en la carpeta datos/. -->
+<div class="app">
+  <aside class="lateral" aria-label="Navegación">
+    <img class="logo" src="img/logo-blanco.png" alt="Universidad de Antioquia, Facultad de Ingeniería">
+    <nav class="nav" id="nav">
+      <button data-v="inicio" aria-current="page"><span class="num">01</span>Inicio</button>
+      <button data-v="portafolio"><span class="num">02</span>Portafolio</button>
+      <button data-v="ava" class="nav-ava"><span class="num">03</span>Preuniversitario AVA</button>
+      <button data-v="pregrados"><span class="num">04</span>Pregrados</button>
+      <button data-v="posgrados"><span class="num">05</span>Posgrados</button>
+    </nav>
+    <button class="cta-ava" data-qr="avaPreinscripcion" data-t="Preinscripción AVA">
+      <span class="q" data-mini="avaPreinscripcion"></span>
+      <span><b>Preinscríbase en AVA</b><span>Escanee con su celular</span></span>
+    </button>
+    <button class="cta-ava-movil" data-qr="avaPreinscripcion" data-t="Preinscripción AVA">Preinscríbase en AVA</button>
+    <div class="herr">
+      <button id="btn-pantalla" type="button">Pantalla completa</button>
+    </div>
+  </aside>
+
+  <main class="lienzo" id="lienzo">
+    <!-- INICIO -->
+    <section class="vista" id="v-inicio">
+      <div class="hero">
+        <div class="hero-txt">
+          <h1><span id="ini-ante"></span><span id="ini-titulo" class="h1-t"></span></h1>
+          <p class="cuerpo" id="ini-desc"></p>
+          <div class="cifras" id="ini-cifras"></div>
+        </div>
+        <div class="ilus">
+          <img class="foto" src="img/ilus-estudiante-sm.webp" alt="">
+          <p class="cita" id="ini-cita"></p>
+          <img class="logo-sobre" src="img/logo-blanco.png" alt="">
+        </div>
+      </div>
+      <div class="banda-ava">
+        <div class="banda-txt">
+          <span class="ante" id="banda-ante"></span>
+          <h2 id="banda-titulo"></h2>
+          <p id="banda-texto"></p>
+          <div class="acciones">
+            <button class="btn" data-ir="ava">Hacer la prueba diagnóstica</button>
+            <button class="btn sec" data-ir="ava">Conocer AVA</button>
+          </div>
+        </div>
+        <button class="qr-grande" data-qr="avaPreinscripcion" data-t="Preinscripción AVA">
+          <span class="q" data-mini="avaPreinscripcion"></span>
+          <b>Preinscríbase aquí</b>
+        </button>
+      </div>
+      <div class="accesos">
+        <button class="acceso" data-ir="ava"><b>Prepárese con AVA</b><span id="acc-ava"></span><i>Hacer la prueba</i></button>
+        <button class="acceso" data-ir="pregrados"><b>Encuentre su ingeniería</b><span>Filtre por sede o modalidad y abra el pensum de cada programa.</span><i>Ver pregrados</i></button>
+        <button class="acceso" data-ir="posgrados"><b>Siga con un posgrado</b><span id="acc-pos"></span><i>Ver posgrados</i></button>
+      </div>
+    </section>
+
+    <!-- PREGRADOS -->
+    <section class="vista" id="v-pregrados" hidden>
+      <img class="deco-anillo" src="img/anillo-verde.png" alt="">
+      <div id="pre-lista">
+        <header class="encabezado">
+          <span class="ante">Oferta 2026</span>
+          <h2 class="titulo">Programas de pregrado</h2>
+          <p class="cuerpo">Toque un programa para ver su plan de estudios y los documentos oficiales.</p>
+        </header>
+        <div class="filtros" id="pre-filtros" role="group" aria-label="Filtrar pregrados">
+          <button class="chip" data-f="todos" aria-pressed="true">Todos</button>
+          <button class="chip" data-f="medellin" aria-pressed="false">Medellín</button>
+          <button class="chip" data-f="regiones" aria-pressed="false">Regiones</button>
+          <button class="chip" data-f="virtual" aria-pressed="false">Virtual</button>
+          <input class="buscar" id="buscar" type="search" placeholder="Buscar programa o sede" aria-label="Buscar programa o sede" autocomplete="off">
+          <span class="conteo" id="conteo"></span>
+        </div>
+        <div class="grid-prog" id="grid-prog"></div>
+      </div>
+      <div id="pre-detalle" hidden></div>
+    </section>
+
+    <!-- POSGRADOS -->
+    <section class="vista" id="v-posgrados" hidden>
+      <img class="deco-anillo" src="img/anillo-verde.png" alt="">
+      <div id="pos-lista">
+        <header class="encabezado">
+          <span class="ante">Formación avanzada</span>
+          <h2 class="titulo">Programas de posgrado</h2>
+          <p class="cuerpo">Especializaciones, maestrías y doctorados de la Facultad. Toque un programa para ver su plan de estudios y los documentos oficiales.</p>
+        </header>
+        <div class="pos-info">
+          <div class="hecho"><b id="pos-insc"></b><span>inscripciones para el periodo <span id="pos-per"></span></span></div>
+          <div class="hecho"><b id="pos-der"></b><span>derechos de inscripción</span></div>
+          <div class="hecho"><b id="pos-desc"></b><span>de descuento en matrícula para egresados UdeA</span></div>
+          <button class="qr-mini" data-qr="posInscripcion" data-t="Inscripción a posgrados"><span class="q" data-mini="posInscripcion"></span><span><b>Inscripción a posgrados</b><span>Calendario, pago e inscripción en línea.</span></span></button>
+        </div>
+        <div class="filtros" id="pos-filtros" role="group" aria-label="Filtrar posgrados">
+          <button class="chip" data-f="todos" aria-pressed="true">Todos</button>
+          <button class="chip" data-f="Especialización" aria-pressed="false">Especializaciones</button>
+          <button class="chip" data-f="Maestría" aria-pressed="false">Maestrías</button>
+          <button class="chip" data-f="Doctorado" aria-pressed="false">Doctorados</button>
+          <button class="chip" data-f="virtual" aria-pressed="false">Virtual</button>
+          <input class="buscar" id="pos-buscar" type="search" placeholder="Buscar posgrado" aria-label="Buscar posgrado" autocomplete="off">
+          <span class="conteo" id="pos-conteo"></span>
+        </div>
+        <div class="grid-prog" id="pos-grid"></div>
+        <p class="nota" style="margin-top:18px">Programas con ficha en el sitio de la Facultad, consultados el <span id="pos-fecha"></span>. La oferta abierta en cada periodo se confirma en el proceso de inscripción.</p>
+      </div>
+      <div id="pos-detalle" hidden></div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section class="vista" id="v-portafolio" hidden>
+      <img class="deco-zig" src="img/zigzag.png" alt="">
+      <img class="deco-anillo" src="img/anillo-verde.png" alt="">
+      <header class="encabezado">
+        <span class="ante">Conozca nuestro</span>
+        <h2 class="titulo">Portafolio</h2>
+        <p class="cuerpo">Las líneas de trabajo de la Facultad de Ingeniería. Toque una tarjeta para escanear su enlace oficial.</p>
+      </header>
+      <div class="port" id="port"></div>
+      <div class="redes" id="redes"></div>
+    </section>
+
+    <!-- AVA -->
+    <section class="vista" id="v-ava" hidden>
+      <div class="ava">
+        <div class="panel">
+          <span class="ante" id="ava-ante"></span>
+          <h2 id="ava-nombre"></h2>
+          <p id="ava-desc"></p>
+          <dl class="datos">
+            <div><dt>Dirigido a</dt><dd id="ava-dirigido"></dd></div>
+            <div><dt>Modalidad</dt><dd id="ava-modalidad"></dd></div>
+          </dl>
+          <button class="qr-mini" data-qr="avaPreinscripcion" data-t="Preinscripción AVA"><span class="q" data-mini="avaPreinscripcion"></span><span><b>Preinscripción AVA</b><span>Escanee y diligencie el formulario desde su celular.</span></span></button>
+          <button class="qr-mini" data-qr="ava" data-t="Información oficial de AVA"><span class="q" data-mini="ava"></span><span><b>Información oficial</b><span>Noticia de AVA en el portal de la Facultad.</span></span></button>
+        </div>
+        <div>
+          <div class="hechos" id="ava-hechos"></div>
+          <div class="rasgos" id="ava-rasgos"></div>
+          <div class="aviso" id="ava-aviso"></div>
+
+          <div class="prueba" id="prueba" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-t">
+  <div class="caja">
+    <h3 id="modal-t">Escanee con su celular</h3>
+    <div class="qr" id="modal-qr"></div>
+    <small id="modal-url"></small>
+    <div class="acciones">
+      <a class="btn osc" id="modal-abrir" href="#" target="_blank" rel="noopener">Abrir enlace</a>
+      <button class="btn" id="modal-cerrar" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Librería de códigos QR -->
+<script src="js/vendor/qrcode.min.js"></script>
+<!-- Contenido editable -->
+<script src="datos/sitio.js"></script>
+<script src="datos/enlaces.js"></script>
+<script src="datos/ava.js"></script>
+<script src="datos/pregrados.js"></script>
+<script src="datos/posgrados.js"></script>
+<script src="datos/portafolio.js"></script>
+<script src="datos/prueba-diagnostica.js"></script>
+<!-- Funcionamiento -->
+<script src="js/app.js"></script>
+</body>
+</html>
